@@ -1,0 +1,109 @@
+int sec,min,hour;
+
+void setup(){
+  size(1180,600);
+  background(20);
+}
+
+void spiralShape(int dsp_wid, int dsp_height){
+  pushMatrix();
+  translate(dsp_wid, dsp_height);
+  strokeWeight(2);
+  beginShape();
+  for(float i = 0; i<100; i++) {
+    curveVertex((i*2)*sin(i/2.6), (i*2)*cos(i/2.6));
+  }
+  endShape(); 
+  popMatrix();
+}
+
+void spiralSec(int dsp_wid, int dsp_height){
+  pushMatrix();
+  sec = second();
+  double shap_sec = (5.0/3.0)*sec;
+  translate(dsp_wid, dsp_height);
+  strokeWeight(2);
+  beginShape();
+  for(float i = 0; i<shap_sec; i++) {
+    fill(0);
+    curveVertex((i*2)*sin(i/2.6), (i*2)*cos(i/2.6));
+    //println(shap_sec);
+    if(shap_sec>=99.0){
+       fill(255); 
+    }
+  }
+  endShape(); 
+  popMatrix();
+}
+
+void spiralMin(int dsp_wid, int dsp_height){
+  pushMatrix();
+  min = minute();
+  double shap_min = (5.0/3.0)*min;
+  translate(dsp_wid, dsp_height);
+  strokeWeight(2);
+  beginShape();
+  for(float i = 0; i<shap_min; i++) {
+    fill(0);
+    curveVertex((i*2)*sin(i/2.6), (i*2)*cos(i/2.6));
+    //println(shap_min);
+    if(shap_min>=99.0){
+       fill(255); 
+    }
+  }
+  endShape(); 
+  popMatrix();
+}
+
+void spiralHour(int dsp_wid, int dsp_height){
+  pushMatrix();
+  hour = hour();
+  double shap_hour = (25.0/6.0)*hour;
+  translate(dsp_wid, dsp_height);
+  strokeWeight(2);
+  beginShape();
+  for(float i = 0; i<shap_hour; i++) {
+    fill(0);
+    curveVertex((i*2)*sin(i/2.6), (i*2)*cos(i/2.6));
+    //println(shap_hour);
+    if(shap_hour>=99.0){
+       fill(255); 
+    }
+  }
+  endShape(); 
+  popMatrix();
+}
+
+void draw(){
+  fill(255);
+  spiralShape(206,206);
+  fill(0);
+  spiralHour(206,206);
+  fill(255);
+  spiralShape(600,206);
+  fill(0);
+  spiralMin(600,206);
+  fill(255);
+  spiralShape(994,206);
+  fill(0);
+  spiralSec(994,206);
+  
+  int size = 50;
+  textSize(size);
+  text(hour, 400, 530);
+  text(":", 500, 530);
+  text(min, 550, 530);
+  text(":", 620, 530);
+  text(sec, 700, 530);
+
+ 
+ 
+  
+  /*text(hour, blank, 500);
+  text(":", size+blank, 500);
+  text(min, size+blank*2, 500);
+  text(":", size*2+blank*3, 500);
+  text(sec, size*2+blank*4, 500);
+  */
+  
+}
